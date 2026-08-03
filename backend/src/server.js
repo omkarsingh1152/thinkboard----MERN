@@ -72,6 +72,11 @@ app.use(cors({
     origin: process.env.FRONTEND_URL
 }));
 
+
+console.log("process.cwd():", process.cwd());
+console.log("__dirname:", __dirname);
+console.log("Resolved path:", path.join(__dirname, "../frontend/thinkboard/dist"));
+
 if (process.env.NODE_ENV === "production") {
     app.use(rateLimiter);
 
@@ -83,7 +88,7 @@ if (process.env.NODE_ENV === "production") {
 
     app.get("*", (req, res) => {
         res.sendFile(
-            path.join(__dirname, "frontend/thinkboard/dist/index.html")
+            path.join(__dirname, "../frontend/thinkboard/dist/index.html")
         );
     });
 }
